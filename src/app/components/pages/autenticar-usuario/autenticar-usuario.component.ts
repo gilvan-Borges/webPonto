@@ -40,7 +40,7 @@ export class AutenticarUsuarioComponent {
 
 
   autenticarUsuario() {
-    this.httpClient.post('http://localhost:8093/api/login/autenticar', this.formulario.value)
+    this.httpClient.post('http://localhost:8096/api/login/autenticar', this.formulario.value)
       .subscribe({
         next: (data: any) => {
           

@@ -62,7 +62,7 @@ export class CriarUsuarioComponent {
   this.mensagemSucesso = '';
   this.mensagemErro = '';
 
-    this.httpClient.post('http://localhost:8093/api/login/cadastrar', this.formulario.value)
+    this.httpClient.post('http://localhost:8096/api/login/cadastrar', this.formulario.value)
       .subscribe({
         next: (data: any) =>{
           this.mensagemSucesso = data.mensagem;
