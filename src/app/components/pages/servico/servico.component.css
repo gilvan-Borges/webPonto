@@ -1,0 +1,22 @@
+.hero-servico{  
+    text-align: center;
+    flex-direction: column;
+}
+.hero-section{
+    height:calc(100vh - 60px);
+}
+img{
+    max-width: 100px;
+    height: 100px;
+    margin: 5px;
+    border-radius: 50%;
+}
+.login{
+   text-align: end;
+   margin-right: 15px
+}
+.btnServico{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 200px;
+}

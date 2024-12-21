@@ -1,0 +1,45 @@
+<div class="hero-section justify-content-center align-items-center collum">
+    <div class=" container login card-body d-flex">
+
+        <div class="foto">
+            <img
+            src="https://thispersondoesnotexist.com/"/>
+        </div>
+
+        <div class="data">
+            Data: 
+        </div>
+
+    </div>
+
+    <div class="container">
+        <div class="hero-servico">
+            
+            <div class="inicioAlmoco">
+                <button class="btn btn-primary btnServico" [disabled]="disabled[0]" (click)="habilitarBotao(1)">
+                    Iniciar Serviço
+                </button>
+           </div>
+
+           <div class="inicioAlmoco">
+                <button class="btn btn-primary btnServico" [disabled]="disabled[1]" (click)="habilitarBotao(2)">
+                    Iniciar Almoço
+                </button>
+           </div>
+
+           <div class="fimAlmoco">
+                <button class="btn btn-primary btnServico" [disabled]="disabled[2]" (click)="habilitarBotao(3)">
+                    Fim Almoço
+                </button>
+            </div>
+
+            <div class="fimServico">
+                <button class="btn btn-primary btnServico" [disabled]="disabled[3]">
+                    Fim Serviço
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+</div>
