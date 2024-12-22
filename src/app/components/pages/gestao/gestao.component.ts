@@ -11,17 +11,41 @@ import OSM from 'ol/source/OSM';
 import Icon from 'ol/style/Icon';
 import Style from 'ol/style/Style';
 import Overlay from 'ol/Overlay'; // Importa o Overlay
+import { HttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-gestao',
   templateUrl: './gestao.component.html',
-  styleUrls: ['./gestao.component.css']
+  styleUrls: ['./gestao.component.css'],
+  imports : [
+    CommonModule
+  ]
 })
 export class GestaoComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.initMap();
   }
+
+  funcionarios: any[] = [];
+  constructor(
+    //declarando e já inicializando a classe HttpClient
+    private httpClient: HttpClient
+  ) { }
+
+  ngOnInit() {
+    //fazendo uma requisição para o serviço de
+    //consulta de clientes da API
+    this.httpClient
+      .get('http://localhost:8095/api/funcionario/consultar')
+      .subscribe({ //aguardando a API retornar uma resposta
+        next: (data) => {
+          this.funcionarios = data as any[];
+        }
+      });
+  }
+
 
   private initMap(): void {
     const mockCoordinate = [-43.176593, -22.907537];
@@ -95,7 +119,13 @@ export class GestaoComponent implements AfterViewInit {
           }
         });
       });
+
+
       
     }
   }
 }
+function ngOnInit() {
+  throw new Error('Function not implemented.');
+}
+

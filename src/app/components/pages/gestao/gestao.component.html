@@ -1,5 +1,32 @@
 <div class="container">
-    <div id="mapa" class="mapa-container"></div>
-    <div id="tooltip" class="tooltip-box"></div>
+  <div id="mapa" class="mapa-container"></div>
+  <div id="tooltip" class="tooltip-box"></div>
+
+
+  <div class="table-responsive mt-2">
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th>Nome do funcionario</th>
+          <th>Cargo</th>
+          <th>Coordenada</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of funcionarios">
+          <td> {{ c.nome }} </td>
+          <td> {{ c.cargo }} </td>
+          <td> {{ c.coordenada }} </td>
+         
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="5">
+            Quantidade de clientes: {{ funcionarios.length }}
+          </td>
+        </tr>
+      </tfoot>
+    </table>
   </div>
-  
+</div>
