@@ -2,28 +2,73 @@
   <div id="mapa" class="mapa-container"></div>
   <div id="tooltip" class="tooltip-box"></div>
 
+  <!-- Modal -->
+  <div class="modal fade" tabindex="-1" id="modal-ponto">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Pontos do funcionário</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <!-- modal-body -->
+        <div class="modal-body">
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th>Ponto</th>
+                <th>Data do Ponto</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let c of pontos">
+                <td>{{ c.nomePonto }}</td>
+                <td>{{ c.dataHora }}</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="5">
+                  Quantidade de pontos: {{ pontos.length }}
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <!-- Tabela de funcionários -->
   <div class="table-responsive mt-2">
     <table class="table table-sm">
       <thead>
         <tr>
-          <th>Nome do funcionario</th>
+          <th>Nome do Funcionário</th>
           <th>Cargo</th>
           <th>Coordenada</th>
+          <th>Ação</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let c of funcionarios">
-          <td> {{ c.nome }} </td>
-          <td> {{ c.cargo }} </td>
-          <td> {{ c.coordenada }} </td>
-         
+          <td>{{ c.nome }}</td>
+          <td>{{ c.cargo }}</td>
+          <td>{{ c.coordenada }}</td>
+          <td>
+            <!-- Ao clicar, carrega os pontos desse funcionário -->
+            <button class="btn btn-sm btn-primary me-1" (click)="loadPontos(c.id)" data-bs-toggle="modal" data-bs-target="#modal-ponto">
+              Ver Pontos
+            </button>
+          </td>
         </tr>
       </tbody>
       <tfoot>
         <tr>
           <td colspan="5">
-            Quantidade de clientes: {{ funcionarios.length }}
+            Quantidade de funcionários: {{ funcionarios.length }}
           </td>
         </tr>
       </tfoot>

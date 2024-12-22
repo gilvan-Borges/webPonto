@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit } from '@angular/core';
 import Map from 'ol/Map';
 import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';
@@ -10,7 +10,7 @@ import { fromLonLat } from 'ol/proj';
 import OSM from 'ol/source/OSM';
 import Icon from 'ol/style/Icon';
 import Style from 'ol/style/Style';
-import Overlay from 'ol/Overlay'; // Importa o Overlay
+import Overlay from 'ol/Overlay';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 
@@ -18,39 +18,35 @@ import { CommonModule } from '@angular/common';
   selector: 'app-gestao',
   templateUrl: './gestao.component.html',
   styleUrls: ['./gestao.component.css'],
-  imports : [
-    CommonModule
-  ]
+  imports: [CommonModule],
 })
-export class GestaoComponent implements AfterViewInit {
+export class GestaoComponent implements AfterViewInit, OnInit {
+  funcionarios: any[] = [];
+  pontos: any[] = [];
+  id: number = 123; // Exemplo de id inicial
+
+  constructor(private httpClient: HttpClient) {}
+
+  ngOnInit() {
+    // Requisição para obter os funcionários
+    this.httpClient.get('http://localhost:8095/api/funcionario/consultar')
+      .subscribe({
+        next: (data) => {
+          this.funcionarios = data as any[];
+        },
+        error: (err) => {
+          console.error('Erro ao carregar funcionários:', err);
+        }
+      });
+  }
 
   ngAfterViewInit(): void {
     this.initMap();
   }
 
-  funcionarios: any[] = [];
-  constructor(
-    //declarando e já inicializando a classe HttpClient
-    private httpClient: HttpClient
-  ) { }
-
-  ngOnInit() {
-    //fazendo uma requisição para o serviço de
-    //consulta de clientes da API
-    this.httpClient
-      .get('http://localhost:8095/api/funcionario/consultar')
-      .subscribe({ //aguardando a API retornar uma resposta
-        next: (data) => {
-          this.funcionarios = data as any[];
-        }
-      });
-  }
-
-
   private initMap(): void {
     const mockCoordinate = [-43.176593, -22.907537];
 
-    // Dados mockados do operador
     const operadorData = {
       nome: 'JAVEIROS DE PLANTÃO',
       coordenadas: mockCoordinate,
@@ -95,7 +91,7 @@ export class GestaoComponent implements AfterViewInit {
     const overlayElement = document.getElementById('tooltip');
     if (overlayElement) {
       const overlay = new Overlay({
-        element: overlayElement as HTMLElement, // Garantir que é do tipo HTMLElement
+        element: overlayElement as HTMLElement,
         positioning: 'bottom-center',
         offset: [0, -10],
       });
@@ -106,7 +102,7 @@ export class GestaoComponent implements AfterViewInit {
       map.on('click', (event) => {
         map.forEachFeatureAtPixel(event.pixel, (feature) => {
           const geometry = feature.getGeometry();
-          if (geometry && geometry instanceof Point) { // Verifica se é uma Point
+          if (geometry && geometry instanceof Point) {
             const coordenadas = geometry.getCoordinates();
             if (coordenadas) {
               overlay.setPosition(coordenadas);
@@ -119,13 +115,34 @@ export class GestaoComponent implements AfterViewInit {
           }
         });
       });
-
-
-      
     }
   }
-}
-function ngOnInit() {
-  throw new Error('Function not implemented.');
-}
 
+  // Função para carregar os pontos de um funcionário selecionado
+  loadPontos(idFuncionario: number): void {
+    this.id = idFuncionario; // Atualiza o id do funcionário
+    console.log('Carregando pontos para o funcionário com ID:', idFuncionario);
+
+    // Requisição para obter os pontos do funcionário
+    const startDate = '2024-12-01';
+    const endDate = '2024-12-31';
+
+    this.httpClient.get('http://localhost:8095/api/ponto/consultar/', {
+      params: {
+        idFuncionario: this.id.toString(),
+        dataInicio: startDate,
+        dataFim: endDate
+      },
+      responseType: 'json' // Esperando a resposta como JSON
+    })
+    .subscribe({
+      next: (data) => {
+        console.log('Dados de pontos recebidos:', data);
+        this.pontos = data as any[]; // Atribui os pontos à variável 'pontos'
+      },
+      error: (err) => {
+        console.error('Erro ao carregar pontos:', err);
+      }
+    });
+  }
+}
