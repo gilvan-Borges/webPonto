@@ -6,40 +6,53 @@ import {
   createOrUpdate2 as createOrUpdate3,
   hash,
   withinExtentAndZ
-} from "./chunk-7GCDMPMW.js";
+} from "./chunk-QY3FK4VO.js";
 import {
-  TileState_default,
-  scale,
-  toSize
-} from "./chunk-3LEBAORA.js";
+  TileState_default
+} from "./chunk-PWOXHWUC.js";
 import {
   DEFAULT_MAX_ZOOM,
-  DEFAULT_TILE_SIZE,
-  EventType_default,
-  Event_default,
-  Object_default,
-  abstract,
-  assert,
-  getUid,
-  intersectsLinearRing,
-  isSorted,
-  linearFindNearest
-} from "./chunk-PO7IASFD.js";
+  DEFAULT_TILE_SIZE
+} from "./chunk-T6BJUUWP.js";
+import {
+  Source_default
+} from "./chunk-LTZNUM4G.js";
+import {
+  intersectsLinearRing
+} from "./chunk-MQPM6AEO.js";
+import "./chunk-PYI7I27D.js";
 import {
   METERS_PER_UNIT,
-  ceil,
-  clamp,
   containsCoordinate,
   createOrUpdate,
   equivalent,
-  floor,
   get,
   getCorner,
   getHeight,
   getTopLeft,
-  getWidth,
+  getWidth
+} from "./chunk-Z576RKOW.js";
+import "./chunk-3S6XKZIH.js";
+import {
+  scale,
+  toSize
+} from "./chunk-P6LFJGEQ.js";
+import {
+  ceil,
+  clamp,
+  floor,
   modulo
-} from "./chunk-XQ7KMS6H.js";
+} from "./chunk-7Y4YVFUG.js";
+import {
+  EventType_default,
+  Event_default,
+  abstract,
+  assert,
+  getUid,
+  isSorted,
+  linearFindNearest
+} from "./chunk-H2CPFOG6.js";
+import "./chunk-VNWMKJWE.js";
 import "./chunk-WDMUDEB6.js";
 
 // node_modules/ol/source/TileEventType.js
@@ -66,125 +79,6 @@ var TileEventType_default = {
    */
   TILELOADERROR: "tileloaderror"
 };
-
-// node_modules/ol/source/Source.js
-var Source = class extends Object_default {
-  /**
-   * @param {Options} options Source options.
-   */
-  constructor(options) {
-    super();
-    this.projection = get(options.projection);
-    this.attributions_ = adaptAttributions(options.attributions);
-    this.attributionsCollapsible_ = options.attributionsCollapsible ?? true;
-    this.loading = false;
-    this.state_ = options.state !== void 0 ? options.state : "ready";
-    this.wrapX_ = options.wrapX !== void 0 ? options.wrapX : false;
-    this.interpolate_ = !!options.interpolate;
-    this.viewResolver = null;
-    this.viewRejector = null;
-    const self = this;
-    this.viewPromise_ = new Promise(function(resolve, reject) {
-      self.viewResolver = resolve;
-      self.viewRejector = reject;
-    });
-  }
-  /**
-   * Get the attribution function for the source.
-   * @return {?Attribution} Attribution function.
-   * @api
-   */
-  getAttributions() {
-    return this.attributions_;
-  }
-  /**
-   * @return {boolean} Attributions are collapsible.
-   * @api
-   */
-  getAttributionsCollapsible() {
-    return this.attributionsCollapsible_;
-  }
-  /**
-   * Get the projection of the source.
-   * @return {import("../proj/Projection.js").default|null} Projection.
-   * @api
-   */
-  getProjection() {
-    return this.projection;
-  }
-  /**
-   * @param {import("../proj/Projection").default} [projection] Projection.
-   * @return {Array<number>|null} Resolutions.
-   */
-  getResolutions(projection) {
-    return null;
-  }
-  /**
-   * @return {Promise<import("../View.js").ViewOptions>} A promise for view-related properties.
-   */
-  getView() {
-    return this.viewPromise_;
-  }
-  /**
-   * Get the state of the source, see {@link import("./Source.js").State} for possible states.
-   * @return {import("./Source.js").State} State.
-   * @api
-   */
-  getState() {
-    return this.state_;
-  }
-  /**
-   * @return {boolean|undefined} Wrap X.
-   */
-  getWrapX() {
-    return this.wrapX_;
-  }
-  /**
-   * @return {boolean} Use linear interpolation when resampling.
-   */
-  getInterpolate() {
-    return this.interpolate_;
-  }
-  /**
-   * Refreshes the source. The source will be cleared, and data from the server will be reloaded.
-   * @api
-   */
-  refresh() {
-    this.changed();
-  }
-  /**
-   * Set the attributions of the source.
-   * @param {AttributionLike|undefined} attributions Attributions.
-   *     Can be passed as `string`, `Array<string>`, {@link module:ol/source/Source~Attribution},
-   *     or `undefined`.
-   * @api
-   */
-  setAttributions(attributions) {
-    this.attributions_ = adaptAttributions(attributions);
-    this.changed();
-  }
-  /**
-   * Set the state of the source.
-   * @param {import("./Source.js").State} state State.
-   */
-  setState(state) {
-    this.state_ = state;
-    this.changed();
-  }
-};
-function adaptAttributions(attributionLike) {
-  if (!attributionLike) {
-    return null;
-  }
-  if (typeof attributionLike === "function") {
-    return attributionLike;
-  }
-  if (!Array.isArray(attributionLike)) {
-    attributionLike = [attributionLike];
-  }
-  return (frameState) => attributionLike;
-}
-var Source_default = Source;
 
 // node_modules/ol/tilegrid/TileGrid.js
 var tmpTileCoord = [0, 0, 0];

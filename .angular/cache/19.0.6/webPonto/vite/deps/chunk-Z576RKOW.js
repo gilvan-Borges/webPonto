@@ -1,3 +1,11 @@
+import {
+  clamp,
+  modulo,
+  toDegrees,
+  toRadians,
+  wrap
+} from "./chunk-7Y4YVFUG.js";
+
 // node_modules/ol/proj/Units.js
 var METERS_PER_UNIT = {
   // use the radius of the Normal sphere
@@ -255,23 +263,9 @@ function add(code, projection) {
   cache[code] = projection;
 }
 
-// node_modules/ol/obj.js
-function clear2(object) {
-  for (const property in object) {
-    delete object[property];
-  }
-}
-function isEmpty(object) {
-  let property;
-  for (property in object) {
-    return false;
-  }
-  return !property;
-}
-
 // node_modules/ol/proj/transforms.js
 var transforms = {};
-function clear3() {
+function clear2() {
   transforms = {};
 }
 function add2(source, destination, transformFn) {
@@ -313,6 +307,16 @@ function _boundingExtentXYs(xs, ys, dest) {
   const maxX = Math.max.apply(null, xs);
   const maxY = Math.max.apply(null, ys);
   return createOrUpdate(minX, minY, maxX, maxY, dest);
+}
+function buffer(extent, value, dest) {
+  if (dest) {
+    dest[0] = extent[0] - value;
+    dest[1] = extent[1] - value;
+    dest[2] = extent[2] + value;
+    dest[3] = extent[3] + value;
+    return dest;
+  }
+  return [extent[0] - value, extent[1] - value, extent[2] + value, extent[3] + value];
 }
 function clone(extent, dest) {
   if (dest) {
@@ -659,99 +663,6 @@ function wrapAndSliceX(extent, projection, multiWorld) {
   return [extent];
 }
 
-// node_modules/ol/math.js
-function clamp(value, min, max) {
-  return Math.min(Math.max(value, min), max);
-}
-function squaredSegmentDistance(x, y, x1, y1, x2, y2) {
-  const dx = x2 - x1;
-  const dy = y2 - y1;
-  if (dx !== 0 || dy !== 0) {
-    const t = ((x - x1) * dx + (y - y1) * dy) / (dx * dx + dy * dy);
-    if (t > 1) {
-      x1 = x2;
-      y1 = y2;
-    } else if (t > 0) {
-      x1 += dx * t;
-      y1 += dy * t;
-    }
-  }
-  return squaredDistance(x, y, x1, y1);
-}
-function squaredDistance(x1, y1, x2, y2) {
-  const dx = x2 - x1;
-  const dy = y2 - y1;
-  return dx * dx + dy * dy;
-}
-function solveLinearSystem(mat) {
-  const n = mat.length;
-  for (let i = 0; i < n; i++) {
-    let maxRow = i;
-    let maxEl = Math.abs(mat[i][i]);
-    for (let r = i + 1; r < n; r++) {
-      const absValue = Math.abs(mat[r][i]);
-      if (absValue > maxEl) {
-        maxEl = absValue;
-        maxRow = r;
-      }
-    }
-    if (maxEl === 0) {
-      return null;
-    }
-    const tmp = mat[maxRow];
-    mat[maxRow] = mat[i];
-    mat[i] = tmp;
-    for (let j = i + 1; j < n; j++) {
-      const coef = -mat[j][i] / mat[i][i];
-      for (let k = i; k < n + 1; k++) {
-        if (i == k) {
-          mat[j][k] = 0;
-        } else {
-          mat[j][k] += coef * mat[i][k];
-        }
-      }
-    }
-  }
-  const x = new Array(n);
-  for (let l = n - 1; l >= 0; l--) {
-    x[l] = mat[l][n] / mat[l][l];
-    for (let m = l - 1; m >= 0; m--) {
-      mat[m][n] -= mat[m][l] * x[l];
-    }
-  }
-  return x;
-}
-function toDegrees(angleInRadians) {
-  return angleInRadians * 180 / Math.PI;
-}
-function toRadians(angleInDegrees) {
-  return angleInDegrees * Math.PI / 180;
-}
-function modulo(a, b) {
-  const r = a % b;
-  return r * b < 0 ? r + b : r;
-}
-function lerp(a, b, x) {
-  return a + x * (b - a);
-}
-function toFixed(n, decimals) {
-  const factor = Math.pow(10, decimals);
-  return Math.round(n * factor) / factor;
-}
-function floor(n, decimals) {
-  return Math.floor(toFixed(n, decimals));
-}
-function ceil(n, decimals) {
-  return Math.ceil(toFixed(n, decimals));
-}
-function wrap(n, min, max) {
-  if (n >= min && n < max) {
-    return n;
-  }
-  const range = max - min;
-  return ((n - min) % range + range) % range + min;
-}
-
 // node_modules/ol/coordinate.js
 function add3(coordinate, delta) {
   coordinate[0] += +delta[0];
@@ -1096,7 +1007,7 @@ function addEquivalentTransforms(projections1, projections2, forwardTransform, i
 }
 function clearAllProjections() {
   clear();
-  clear3();
+  clear2();
 }
 function createProjection(projection, defaultCode) {
   if (!projection) {
@@ -1321,25 +1232,17 @@ function addCommon() {
 addCommon();
 
 export {
-  clear2 as clear,
-  isEmpty,
-  clamp,
-  squaredSegmentDistance,
-  squaredDistance,
-  solveLinearSystem,
-  toRadians,
-  modulo,
-  lerp,
-  floor,
-  ceil,
   METERS_PER_UNIT,
   Projection_default,
+  Relationship_default,
   boundingExtent,
+  buffer,
   clone,
   closestSquaredDistanceXY,
   containsCoordinate,
   containsExtent,
   containsXY,
+  coordinateRelationship,
   createEmpty,
   createOrUpdate,
   createOrUpdateEmpty,
@@ -1362,15 +1265,16 @@ export {
   getTopRight,
   getWidth,
   intersects,
-  isEmpty2,
+  isEmpty2 as isEmpty,
   returnOrUpdate,
   intersectsSegment,
+  wrapX,
   wrapAndSliceX,
   add3 as add,
   equals2,
   rotate,
   scale,
-  wrapX2 as wrapX,
+  wrapX2,
   warn,
   disableCoordinateWarning,
   cloneTransform,
@@ -1406,4 +1310,4 @@ export {
   createSafeCoordinateTransform,
   addCommon
 };
-//# sourceMappingURL=chunk-XQ7KMS6H.js.map
+//# sourceMappingURL=chunk-Z576RKOW.js.map

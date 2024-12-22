@@ -2,7 +2,16 @@ import {
   EventType_default,
   listenOnce,
   unlistenByKey
-} from "./chunk-PO7IASFD.js";
+} from "./chunk-H2CPFOG6.js";
+
+// node_modules/ol/ImageState.js
+var ImageState_default = {
+  IDLE: 0,
+  LOADING: 1,
+  LOADED: 2,
+  ERROR: 3,
+  EMPTY: 4
+};
 
 // node_modules/ol/has.js
 var ua = typeof navigator !== "undefined" && typeof navigator.userAgent !== "undefined" ? navigator.userAgent.toLowerCase() : "";
@@ -124,28 +133,6 @@ function replaceChildren(node, children) {
   }
 }
 
-// node_modules/ol/TileState.js
-var TileState_default = {
-  IDLE: 0,
-  LOADING: 1,
-  LOADED: 2,
-  /**
-   * Indicates that tile loading failed
-   * @type {number}
-   */
-  ERROR: 3,
-  EMPTY: 4
-};
-
-// node_modules/ol/ImageState.js
-var ImageState_default = {
-  IDLE: 0,
-  LOADING: 1,
-  LOADED: 2,
-  ERROR: 3,
-  EMPTY: 4
-};
-
 // node_modules/ol/Image.js
 function listenImage(image, loadHandler, errorHandler) {
   const img = (
@@ -230,7 +217,6 @@ export {
   decodeFallback,
   hasArea,
   scale,
-  toSize,
-  TileState_default
+  toSize
 };
-//# sourceMappingURL=chunk-3LEBAORA.js.map
+//# sourceMappingURL=chunk-P6LFJGEQ.js.map
