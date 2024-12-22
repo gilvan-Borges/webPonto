@@ -119,7 +119,7 @@ export class GestaoComponent implements AfterViewInit, OnInit {
   }
 
   // Função para carregar os pontos de um funcionário selecionado
-  loadPontos(idFuncionario: number): void {
+  loadPontos(idFuncionario: number): void  {  
     this.id = idFuncionario; // Atualiza o id do funcionário
     console.log('Carregando pontos para o funcionário com ID:', idFuncionario);
 
