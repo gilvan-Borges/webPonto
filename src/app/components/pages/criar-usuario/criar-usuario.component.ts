@@ -5,6 +5,11 @@ import { AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModu
 import { RouterLink } from '@angular/router';
 
 
+interface FuncionarioRequestDto {
+  nome: string;
+  cargo: string;
+}
+
 @Component({
   selector: 'app-criar-usuario',
   standalone: true,
@@ -42,15 +47,19 @@ export class CriarUsuarioComponent {
 
 
   senhaConfirmacaoValidator(abstractControl: AbstractControl) {
-    let senha = abstractControl.get('senha')?.value;
-    let senhaConfirmacao = abstractControl.get('senhaConfirmacao')?.value;
-    if (senhaConfirmacao.length > 0 && senhaConfirmacao != senha) {
+    let senha = abstractControl.get('senha')?.value || '';
+    let senhaConfirmacao = abstractControl.get('senhaConfirmacao')?.value || '';
+  
+    if (senhaConfirmacao && senhaConfirmacao.length > 0 && senhaConfirmacao !== senha) {
       abstractControl.get('senhaConfirmacao')?.setErrors({
         matchPassword: true,
       });
+    } else {
+      abstractControl.get('senhaConfirmacao')?.setErrors(null);
     }
     return null;
   }
+  
 
   //
   get f() {
@@ -58,19 +67,21 @@ export class CriarUsuarioComponent {
   }
 
   criarUsuario() {
-
-  this.mensagemSucesso = '';
-  this.mensagemErro = '';
-
+    this.mensagemSucesso = '';
+    this.mensagemErro = '';
+  
+    // Requisição para API de Login
     this.httpClient.post('http://localhost:8096/api/login/cadastrar', this.formulario.value)
       .subscribe({
-        next: (data: any) =>{
+        next: (data: any) => {
           this.mensagemSucesso = data.mensagem;
-          this.formulario.reset();
+          
+
         },
-        error: (e) =>{
+        error: (e) => {
           this.mensagemErro = e.error[0];
         }
-      })
+      });
   }
+  
 }

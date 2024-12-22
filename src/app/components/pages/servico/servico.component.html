@@ -1,45 +1,69 @@
-<div class="hero-section justify-content-center align-items-center collum">
-    <div class=" container login card-body d-flex">
-
+<div class="hero-section d-flex justify-content-center align-items-center vh-100">
+  <div class="container">
+    <!-- Card de Login -->
+    <div class="card shadow-sm">
+      <div class="card-body text-center">
+        <h3 class="mb-4">
+          Bem-vindo, <span>{{ usuario?.nome }}</span>
+        </h3>
         <div class="foto">
-            <img
-            src="https://thispersondoesnotexist.com/"/>
+          <img
+            src="https://thispersondoesnotexist.com/"
+            class="rounded-circle"
+            alt="Foto de perfil"
+            width="150"
+          />
         </div>
-
-        <div class="data">
-            Data: 
-        </div>
-
+      </div>
     </div>
+    
+    
 
-    <div class="container">
-        <div class="hero-servico">
+    <!-- Botões de Serviço -->
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card shadow">
+          <div class="card-body text-center">
+            <h4 class="mb-4">Controle de Serviço</h4>
             
-            <div class="inicioAlmoco">
-                <button class="btn btn-primary btnServico" [disabled]="disabled[0]" (click)="habilitarBotao(1)">
-                    Iniciar Serviço
+            <div class="row gy-3">
+              <div class="col-12 col-md-6">
+                <button class="btn btn-success w-100" 
+                        [disabled]="btn1" 
+                        (click)="iniciarServico()
+                        ">
+                  Iniciar Serviço
                 </button>
-           </div>
-
-           <div class="inicioAlmoco">
-                <button class="btn btn-primary btnServico" [disabled]="disabled[1]" (click)="habilitarBotao(2)">
-                    Iniciar Almoço
+              </div>
+              
+              <div class="col-12 col-md-6">
+                <button class="btn btn-warning w-100" 
+                        [disabled]="btn2" 
+                        (click)="iniciarAlmoco()">
+                  Iniciar Almoço
                 </button>
-           </div>
-
-           <div class="fimAlmoco">
-                <button class="btn btn-primary btnServico" [disabled]="disabled[2]" (click)="habilitarBotao(3)">
-                    Fim Almoço
+              </div>
+              
+              <div class="col-12 col-md-6">
+                <button class="btn btn-danger w-100" 
+                        [disabled]="btn3" 
+                        (click)="fimAlmoco()">
+                  Fim Almoço
                 </button>
+              </div>
+              
+              <div class="col-12 col-md-6">
+                <button class="btn btn-secondary w-100" 
+                        [disabled]="btn4" 
+                        (click)="fimServico()">
+                  Fim Serviço
+                </button>
+              </div>
             </div>
-
-            <div class="fimServico">
-                <button class="btn btn-primary btnServico" [disabled]="disabled[3]">
-                    Fim Serviço
-                </button>
-            </div>
-
+            
+          </div>
         </div>
+      </div>
     </div>
-
+  </div>
 </div>
