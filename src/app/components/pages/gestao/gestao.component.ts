@@ -45,7 +45,7 @@ export class GestaoComponent implements AfterViewInit, OnInit {
   }
 
   private initMap(): void {
-    const mockCoordinate = [-43.176593, -22.907537];
+    const mockCoordinate = [-43.176593, -22.907537]; // Coordenadas mock para exemplo
 
     const operadorData = {
       nome: 'JAVEIROS DE PLANTÃO',
@@ -107,7 +107,7 @@ export class GestaoComponent implements AfterViewInit, OnInit {
             if (coordenadas) {
               overlay.setPosition(coordenadas);
               overlayElement.style.display = 'block'; // Exibe o tooltip
-              overlayElement.innerHTML = `
+              overlayElement.innerHTML = ` 
                 <strong>Nome:</strong> ${operadorData.nome} <br />
                 <strong>Coordenadas:</strong> ${operadorData.coordenadas.join(', ')}
               `;
@@ -119,7 +119,7 @@ export class GestaoComponent implements AfterViewInit, OnInit {
   }
 
   // Função para carregar os pontos de um funcionário selecionado
-  loadPontos(idFuncionario: number): void  {  
+  loadPontos(idFuncionario: number): void {  
     this.id = idFuncionario; // Atualiza o id do funcionário
     console.log('Carregando pontos para o funcionário com ID:', idFuncionario);
 
@@ -127,22 +127,57 @@ export class GestaoComponent implements AfterViewInit, OnInit {
     const startDate = '2024-12-01';
     const endDate = '2024-12-31';
 
-    this.httpClient.get('http://localhost:8095/api/ponto/consultar/', {
-      params: {
-        idFuncionario: this.id.toString(),
-        dataInicio: startDate,
-        dataFim: endDate
-      },
-      responseType: 'json' // Esperando a resposta como JSON
-    })
-    .subscribe({
-      next: (data) => {
-        console.log('Dados de pontos recebidos:', data);
-        this.pontos = data as any[]; // Atribui os pontos à variável 'pontos'
-      },
-      error: (err) => {
-        console.error('Erro ao carregar pontos:', err);
-      }
+    this.httpClient.get<any[]>(`http://localhost:8095/api/ponto/consultar/${idFuncionario}/${startDate}/${endDate}`)
+      .subscribe({
+        next: (data) => {
+          console.log('Dados de pontos recebidos:', data);
+          this.pontos = data; // Atribui os pontos à variável 'pontos'
+          this.addPontosToMap(data); // Adiciona os pontos no mapa
+        },
+        error: (err) => {
+          console.error('Erro ao carregar pontos:', err);
+        }
+      });
+  }
+
+  // Função para adicionar os pontos ao mapa
+  private addPontosToMap(pontos: any[]): void {
+    const vectorSource = new VectorSource();
+
+    pontos.forEach((ponto) => {
+      const point = new Feature({
+        geometry: new Point(fromLonLat(ponto.coordenadas)), // As coordenadas precisam estar em formato [longitude, latitude]
+      });
+
+      point.setStyle(
+        new Style({
+          image: new Icon({
+            scale: 0.1,
+            src: 'https://media.discordapp.net/attachments/1318715011186823310/1320224282994937946/trabalhadores.png?ex=6768d22d&is=676780ad&hm=e80978f1a76ff92cb5263a273c8d14c61aa67bf8e50dcfdd8c20e784d72de93f&=&format=webp&quality=lossless&width=585&height=585',
+          }),
+        })
+      );
+
+      vectorSource.addFeature(point);
+    });
+
+    const vectorLayer = new VectorLayer({
+      source: vectorSource,
+    });
+
+    // Atualiza o mapa com os novos pontos
+    const map = new Map({
+      target: 'mapa',
+      layers: [
+        new TileLayer({
+          source: new OSM(),
+        }),
+        vectorLayer,
+      ],
+      view: new View({
+        center: fromLonLat([-43.176593, -22.907537]), // Defina o centro inicial do mapa
+        zoom: 16,
+      }),
     });
   }
 }
