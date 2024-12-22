@@ -3,6 +3,7 @@ import { AutenticarUsuarioComponent } from './components/pages/autenticar-usuari
 import { CriarUsuarioComponent } from './components/pages/criar-usuario/criar-usuario.component';
 import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
 import { ServicoComponent } from './components/pages/servico/servico.component';
+import { GestaoComponent } from './components/pages/gestao/gestao.component';
 
 export const routes: Routes = [
 
@@ -27,6 +28,11 @@ export const routes: Routes = [
         path:'pages/servicos',
         component: ServicoComponent
         
+    },
+
+    {
+        path:'pages/gestao',
+        component: GestaoComponent
     },
 
     {

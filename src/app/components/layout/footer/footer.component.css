@@ -1,0 +1,13 @@
+.footer {
+    background-color: #343a40; /* Cor escura do Bootstrap */
+    color: white;
+  }
+  
+  .footer a {
+    color: white;
+  }
+  
+  .footer a:hover {
+    color: #f8f9fa; /* Cor para links ao passar o mouse */
+  }
+  
