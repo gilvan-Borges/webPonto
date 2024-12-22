@@ -1,8 +1,8 @@
-<nav  class="navbar navbar-expand-lg bg-body-tertiary mb-3 ">
+<nav  class="navbar navbar-expand-lg bg-body-tertiary mb-3 " *ngIf="autenticado">
 
     <header class="header">
 
-        <div class="container">
+        <div class="container" >
             
             <div class="btn-menu" [ngClass]="{'x': isMenuOpen}" (click)="controlMenu()">
                 <div class="bar"></div>
@@ -13,6 +13,8 @@
             <div class="menu" [ngClass]="{'menu-open': isMenuOpen}" (click)="controlMenu()">
 
                 <nav>
+                    <a href="">Gestão</a>
+                    <a href=""></a>
                     <a href=""><button (click)="logout()" class="sair btn btn-link">Sair do sistema</button></a>
                 </nav>
             </div>

@@ -22,7 +22,7 @@ export class LoginGuard implements CanActivate {
 
 
         if(data){
-            this.router.navigate(['']);
+            this.router.navigate(['/pages/gestao']);
             return false;
         }
         else {            

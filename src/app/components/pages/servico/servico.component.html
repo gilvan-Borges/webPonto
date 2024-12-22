@@ -1,45 +1,74 @@
-<div class="hero-section justify-content-center align-items-center collum">
-    <div class=" container login card-body d-flex">
-
-        <div class="foto">
-            <img
-            src="https://thispersondoesnotexist.com/"/>
+<div class="hero-section d-flex justify-content-center align-items-center vh-100 bg-light">
+  <div class="container">
+    <!-- Card de Login -->
+    <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+      <div class="row g-0">
+        <!-- Imagem do lado esquerdo -->
+        <div class="col-md-6 bg-primary text-white d-flex flex-column align-items-center justify-content-center p-4">
+          <img
+            src="https://thispersondoesnotexist.com/"
+            class="rounded-circle border border-white shadow"
+            alt="Foto de perfil"
+            width="180"
+          />
+          <h3 class="mt-3">Bem-vindo,</h3>
+          <h2><strong>{{ usuario?.nome }}</strong></h2>
         </div>
 
-        <div class="data">
-            Data: 
-        </div>
+        <!-- Área de Controle de Serviço -->
+        <div class="col-md-6 d-flex align-items-center justify-content-center bg-white">
+          <div class="card-body text-center">
+            <h4 class="mb-4 text-primary fw-bold">Controle de Ponto</h4>
 
+            <div class="row gy-4">
+              <div class="col-12 col-md-6">
+                <button class="btn btn-lg btn-success w-100 d-flex align-items-center justify-content-center gap-2"
+                        [disabled]="btn1"
+                        (click)="iniciarServico()">
+                  <i class="bi bi-play-circle"></i> Iniciar Serviço
+                </button>
+                <p class="mt-2 text-muted">
+                  Serviço iniciado às: <strong>{{ horaServico }}</strong>
+                </p>
+              </div>
+
+              <div class="col-12 col-md-6">
+                <button class="btn btn-lg btn-warning w-100 d-flex align-items-center justify-content-center gap-2"
+                        [disabled]="btn2"
+                        (click)="iniciarAlmoco()">
+                  <i class="bi bi-clock"></i> Iniciar Almoço
+                </button>
+                <p class="mt-2 text-muted">
+                  Almoço iniciado às: <strong>{{ horaAlmoco }}</strong>
+                </p>
+              </div>
+
+              <div class="col-12 col-md-6">
+                <button class="btn btn-lg btn-danger w-100 d-flex align-items-center justify-content-center gap-2"
+                        [disabled]="btn3"
+                        (click)="fimAlmoco()">
+                  <i class="bi bi-cup-hot"></i> Fim Almoço
+                </button>
+                <p class="mt-2 text-muted">
+                  Almoço finalizado às: <strong>{{ horaFimAlmoco }}</strong>
+                </p>
+              </div>
+
+              <div class="col-12 col-md-6">
+                <button class="btn btn-lg btn-secondary w-100 d-flex align-items-center justify-content-center gap-2"
+                        [disabled]="btn4"
+                        (click)="fimServico()">
+                  <i class="bi bi-stop-circle"></i> Fim Serviço
+                </button>
+                <p class="mt-2 text-muted">
+                  Serviço finalizado às: <strong>{{ horaFimServico }}</strong>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="container">
-        <div class="hero-servico">
-            
-            <div class="inicioAlmoco">
-                <button class="btn btn-primary btnServico" [disabled]="disabled[0]" (click)="habilitarBotao(1)">
-                    Iniciar Serviço
-                </button>
-           </div>
-
-           <div class="inicioAlmoco">
-                <button class="btn btn-primary btnServico" [disabled]="disabled[1]" (click)="habilitarBotao(2)">
-                    Iniciar Almoço
-                </button>
-           </div>
-
-           <div class="fimAlmoco">
-                <button class="btn btn-primary btnServico" [disabled]="disabled[2]" (click)="habilitarBotao(3)">
-                    Fim Almoço
-                </button>
-            </div>
-
-            <div class="fimServico">
-                <button class="btn btn-primary btnServico" [disabled]="disabled[3]">
-                    Fim Serviço
-                </button>
-            </div>
-
-        </div>
-    </div>
-
+  </div>
 </div>

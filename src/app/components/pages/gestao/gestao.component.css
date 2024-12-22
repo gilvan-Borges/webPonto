@@ -1,28 +1,40 @@
+/* Mapa */
 .mapa-container {
-    width: 100%;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
+  width: 100%;
+  height: 40vh; /* Usar 40% da altura da tela no mobile */
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+/* Tooltip */
+.tooltip-box {
+  position: absolute;
+  display: none;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.tooltip-box strong {
+  color: #007bff;
+}
+
+/* Modal */
+.modal-lg {
+  max-width: 90%;
+}
+
+@media (min-width: 768px) {
+  .mapa-container {
+    height: 60vh; /* No desktop, o mapa ocupa 60% da altura da tela */
   }
-  
-  .container {
-    margin-top: 3rem;
+
+  .container-fluid {
+    margin-top: 2rem;
   }
-  
-  .tooltip-box {
-    position: absolute;
-    display: none;
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    font-size: 1rem;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    pointer-events: none;
-    z-index: 10;
-  }
-  
-  .tooltip-box strong {
-    color: #007bff;
-  }
-  
+}

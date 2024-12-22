@@ -5,6 +5,9 @@ import {
   CLASS_SELECTABLE
 } from "./chunk-A6L7QS64.js";
 import {
+  containsExtent
+} from "./chunk-NRSKUPDA.js";
+import {
   outerHeight,
   outerWidth,
   removeChildren
@@ -16,9 +19,6 @@ import {
   listen,
   unlistenByKey
 } from "./chunk-E3OH2JZB.js";
-import {
-  containsExtent
-} from "./chunk-NRSKUPDA.js";
 import "./chunk-VNWMKJWE.js";
 import "./chunk-WDMUDEB6.js";
 

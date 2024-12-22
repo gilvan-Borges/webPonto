@@ -2,7 +2,7 @@ import { HttpInterceptor, HttpInterceptorFn } from "@angular/common/http";
 
 
 const endpoints = [
-  "",
+  "api/login",
   ""
  
 ];

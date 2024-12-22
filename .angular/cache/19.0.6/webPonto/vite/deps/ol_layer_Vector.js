@@ -5,14 +5,11 @@ import {
   Layer_default,
   ZIndexContext_default,
   canvasPool
-} from "./chunk-VUOVCORK.js";
+} from "./chunk-73UGXZR5.js";
 import {
   BaseVector_default
-} from "./chunk-2JSXBB3T.js";
+} from "./chunk-ULYUYCUE.js";
 import "./chunk-VHHBHZNF.js";
-import {
-  EventType_default
-} from "./chunk-FZHFYVJX.js";
 import {
   Icon_default
 } from "./chunk-TJVNIJUR.js";
@@ -34,32 +31,26 @@ import {
   getTextDimensions,
   measureAndCacheTextWidth,
   registerFont
-} from "./chunk-UG3QW3AE.js";
+} from "./chunk-2RNQKWMR.js";
 import "./chunk-PJL2D6VZ.js";
-import "./chunk-RTT3XQ3T.js";
 import {
-  ImageState_default
-} from "./chunk-IUJXF5T3.js";
-import "./chunk-A6L7QS64.js";
-import {
-  createCanvasContext2D,
-  releaseCanvas
-} from "./chunk-DLQ3CDDY.js";
+  EventType_default
+} from "./chunk-A7LHXFWJ.js";
 import {
   ViewHint_default
-} from "./chunk-BEUBVTJD.js";
+} from "./chunk-BB6WHZYQ.js";
+import "./chunk-T6BJUUWP.js";
 import {
   inflateCoordinates,
   inflateCoordinatesArray,
   inflateMultiCoordinatesArray,
   snap
-} from "./chunk-CLMR5J7M.js";
+} from "./chunk-NDOLQLJW.js";
 import {
   rotate,
   transform2D,
   transformGeom2D
-} from "./chunk-JAD3DGHS.js";
-import "./chunk-T6BJUUWP.js";
+} from "./chunk-M4VXG56D.js";
 import "./chunk-ADLXDLTB.js";
 import {
   apply,
@@ -67,15 +58,6 @@ import {
   create,
   setFromArray
 } from "./chunk-WW6QBH4A.js";
-import "./chunk-IJQ6LSTY.js";
-import "./chunk-ECW3C5BQ.js";
-import {
-  ascending,
-  descending,
-  equals,
-  getUid,
-  reverseSubArray
-} from "./chunk-E3OH2JZB.js";
 import {
   fromUserExtent,
   getTransformFromProjections,
@@ -84,11 +66,17 @@ import {
   toUserResolution,
   wrapX as wrapX2
 } from "./chunk-5SJ5ZBLE.js";
+import "./chunk-RTT3XQ3T.js";
+import {
+  ImageState_default
+} from "./chunk-IUJXF5T3.js";
 import {
   clamp,
   lerp,
   toFixed
 } from "./chunk-7Y4YVFUG.js";
+import "./chunk-IJQ6LSTY.js";
+import "./chunk-A6L7QS64.js";
 import {
   Relationship_default,
   buffer,
@@ -104,6 +92,18 @@ import {
   intersects,
   wrapX
 } from "./chunk-NRSKUPDA.js";
+import {
+  createCanvasContext2D,
+  releaseCanvas
+} from "./chunk-DLQ3CDDY.js";
+import "./chunk-ECW3C5BQ.js";
+import {
+  ascending,
+  descending,
+  equals,
+  getUid,
+  reverseSubArray
+} from "./chunk-E3OH2JZB.js";
 import {
   isEmpty
 } from "./chunk-VNWMKJWE.js";

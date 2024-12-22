@@ -1,32 +1,66 @@
 import {
+  BaseVector_default
+} from "./chunk-ULYUYCUE.js";
+import {
   CollectionEventType_default,
   Collection_default
 } from "./chunk-4WVPDSXW.js";
-import {
-  BaseVector_default
-} from "./chunk-2JSXBB3T.js";
 import "./chunk-VHHBHZNF.js";
+import "./chunk-TJVNIJUR.js";
+import {
+  checkedFonts
+} from "./chunk-2RNQKWMR.js";
+import {
+  shared
+} from "./chunk-PJL2D6VZ.js";
+import {
+  TileState_default
+} from "./chunk-PWOXHWUC.js";
 import {
   Base_default,
   EventType_default as EventType_default2,
   Event_default as Event_default2,
   Layer_default,
   inView
-} from "./chunk-FZHFYVJX.js";
+} from "./chunk-A7LHXFWJ.js";
 import {
-  TileState_default
-} from "./chunk-PWOXHWUC.js";
-import "./chunk-TJVNIJUR.js";
+  ViewHint_default,
+  View_default,
+  disable
+} from "./chunk-BB6WHZYQ.js";
 import {
-  checkedFonts
-} from "./chunk-UG3QW3AE.js";
+  easeOut,
+  linear
+} from "./chunk-T6BJUUWP.js";
 import {
-  shared
-} from "./chunk-PJL2D6VZ.js";
+  Polygon_default
+} from "./chunk-NDOLQLJW.js";
+import "./chunk-M4VXG56D.js";
+import "./chunk-ADLXDLTB.js";
+import {
+  apply,
+  compose,
+  create,
+  makeInverse
+} from "./chunk-WW6QBH4A.js";
+import {
+  fromUserCoordinate,
+  rotate,
+  scale,
+  toUserCoordinate,
+  warn,
+  wrapX
+} from "./chunk-5SJ5ZBLE.js";
 import "./chunk-RTT3XQ3T.js";
 import {
   hasArea
 } from "./chunk-IUJXF5T3.js";
+import {
+  clamp
+} from "./chunk-7Y4YVFUG.js";
+import {
+  assert
+} from "./chunk-IJQ6LSTY.js";
 import {
   MapEventType_default
 } from "./chunk-ZO3Y5Y6G.js";
@@ -37,6 +71,15 @@ import {
   CLASS_UNSELECTABLE
 } from "./chunk-A6L7QS64.js";
 import {
+  clone,
+  createOrUpdateEmpty,
+  equals as equals2,
+  getForViewAndSize,
+  getIntersection,
+  getWidth,
+  isEmpty
+} from "./chunk-NRSKUPDA.js";
+import {
   DEVICE_PIXEL_RATIO,
   FIREFOX,
   MAC,
@@ -46,29 +89,6 @@ import {
   replaceChildren,
   replaceNode
 } from "./chunk-DLQ3CDDY.js";
-import {
-  ViewHint_default,
-  View_default,
-  disable
-} from "./chunk-BEUBVTJD.js";
-import {
-  Polygon_default
-} from "./chunk-CLMR5J7M.js";
-import "./chunk-JAD3DGHS.js";
-import {
-  easeOut,
-  linear
-} from "./chunk-T6BJUUWP.js";
-import "./chunk-ADLXDLTB.js";
-import {
-  apply,
-  compose,
-  create,
-  makeInverse
-} from "./chunk-WW6QBH4A.js";
-import {
-  assert
-} from "./chunk-IJQ6LSTY.js";
 import {
   ObjectEventType_default,
   Object_default
@@ -88,26 +108,6 @@ import {
   toPromise,
   unlistenByKey
 } from "./chunk-E3OH2JZB.js";
-import {
-  fromUserCoordinate,
-  rotate,
-  scale,
-  toUserCoordinate,
-  warn,
-  wrapX
-} from "./chunk-5SJ5ZBLE.js";
-import {
-  clamp
-} from "./chunk-7Y4YVFUG.js";
-import {
-  clone,
-  createOrUpdateEmpty,
-  equals as equals2,
-  getForViewAndSize,
-  getIntersection,
-  getWidth,
-  isEmpty
-} from "./chunk-NRSKUPDA.js";
 import {
   clear
 } from "./chunk-VNWMKJWE.js";

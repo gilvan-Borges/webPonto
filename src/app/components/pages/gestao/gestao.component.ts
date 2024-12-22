@@ -13,6 +13,8 @@ import Style from 'ol/style/Style';
 import Overlay from 'ol/Overlay';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { DatePipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-gestao',
@@ -41,9 +43,11 @@ export class GestaoComponent implements AfterViewInit, OnInit {
   }
 
   ngAfterViewInit(): void {
-    this.initMap();
+    setTimeout(() => {
+      this.initMap();  // Inicializa o mapa após garantir que o DOM foi atualizado
+    }, 0);  // Delay de 0 ms para garantir que o Angular tenha finalizado a renderização
   }
-
+  
   private initMap(): void {
     const mockCoordinate = [-43.176593, -22.907537]; // Coordenadas mock para exemplo
 
@@ -123,16 +127,17 @@ export class GestaoComponent implements AfterViewInit, OnInit {
     this.id = idFuncionario; // Atualiza o id do funcionário
     console.log('Carregando pontos para o funcionário com ID:', idFuncionario);
 
-    // Requisição para obter os pontos do funcionário
+    // Definindo o intervalo de datas
     const startDate = '2024-12-01';
     const endDate = '2024-12-31';
 
+    // Requisição para obter os pontos do funcionário com base nas datas
     this.httpClient.get<any[]>(`http://localhost:8095/api/ponto/consultar/${idFuncionario}/${startDate}/${endDate}`)
       .subscribe({
         next: (data) => {
           console.log('Dados de pontos recebidos:', data);
           this.pontos = data; // Atribui os pontos à variável 'pontos'
-          this.addPontosToMap(data); // Adiciona os pontos no mapa
+          // this.addPontosToMap(data); // Adiciona os pontos no mapa
         },
         error: (err) => {
           console.error('Erro ao carregar pontos:', err);
@@ -144,9 +149,12 @@ export class GestaoComponent implements AfterViewInit, OnInit {
   private addPontosToMap(pontos: any[]): void {
     const vectorSource = new VectorSource();
 
-    pontos.forEach((ponto) => {
+    // Usando a variável 'pontos' para adicionar as coordenadas ao mapa
+    this.funcionarios.forEach((funcionario) => {
+      // Aqui, assumimos que cada ponto já tem as coordenadas
+      console.log(funcionario.coordenada)
       const point = new Feature({
-        geometry: new Point(fromLonLat(ponto.coordenadas)), // As coordenadas precisam estar em formato [longitude, latitude]
+        geometry: new Point(fromLonLat(funcionario.coordenada)), // As coordenadas já devem estar no formato [longitude, latitude]
       });
 
       point.setStyle(
