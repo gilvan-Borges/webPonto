@@ -21,7 +21,7 @@
             <tbody>
               <tr *ngFor="let c of pontos">
                 <td>{{ c.nomePonto }}</td>
-                <td>{{ c.dataHora }}</td>
+                <td>{{ c.dataHora | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
               </tr>
             </tbody>
             <tfoot>
@@ -53,7 +53,9 @@
       </thead>
       <tbody>
         <tr *ngFor="let c of funcionarios">
-          <td>{{ c.nome }}</td>
+          <td>
+            <img  src="https://www.cgpdi.org.br/wp-content/uploads/2023/11/user-image.jpg" width="50" alt="Imagem do ponto" class="me-2">
+            {{ c.nome }}
           <td>{{ c.cargo }}</td>
           <td>{{ c.coordenada }}</td>
           <td>

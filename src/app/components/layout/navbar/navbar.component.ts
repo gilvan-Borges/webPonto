@@ -29,20 +29,18 @@ export class NavbarComponent {
   autenticado: boolean = false;
   nomeUsuario: string = '';
 
-
   //função executada quando o componente é carregado
   ngOnInit() {
     
     var data = sessionStorage.getItem('usuario');
     if(data) {
       this.autenticado = true;
+   
       var usuario = JSON.parse(data);
+    
       this.nomeUsuario = usuario.nome;
     }
   }
-
-
- 
   //função para logout do usuário
   logout(){
     if(confirm('Deseja realmente sair do sistema?')){

@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { AutenticarUsuarioComponent } from './components/pages/autenticar-usuario/autenticar-usuario.component';
 import { CriarUsuarioComponent } from './components/pages/criar-usuario/criar-usuario.component';
-import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
 import { ServicoComponent } from './components/pages/servico/servico.component';
 import { GestaoComponent } from './components/pages/gestao/gestao.component';
 import { LoginGuard } from './guards/login.guard';
@@ -23,12 +22,6 @@ export const routes: Routes = [
         
     },
 
-    {
-        path:'pages/dashboard',
-        component: DashboardComponent,
-        canActivate:[AuthGuard]
-        
-    },
     {
         path:'pages/servicos',
         component: ServicoComponent,

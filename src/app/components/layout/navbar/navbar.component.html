@@ -2,7 +2,11 @@
 
     <header class="header">
 
-        <div class="container" >
+        <div class="container">
+            <div class="logo">
+                <img style="width: 100%;"
+                    src="https://media.discordapp.net/attachments/1318715011186823310/1320369050102267914/Cargas_con_3.gif?ex=67695900&is=67680780&hm=e8bc5281452ba99b5b21718e2d04b3e92b50d36cea5a40b508e5d881f93dba98&=&width=437&height=437" />
+            </div>
             
             <div class="btn-menu" [ngClass]="{'x': isMenuOpen}" (click)="controlMenu()">
                 <div class="bar"></div>
@@ -13,10 +17,12 @@
             <div class="menu" [ngClass]="{'menu-open': isMenuOpen}" (click)="controlMenu()">
 
                 <nav>
-                    <a href="">Gestão</a>
-                    <a href=""></a>
-                    <a href=""><button (click)="logout()" class="sair btn btn-link">Sair do sistema</button></a>
-                </nav>
+                    <a  routerLink="/pages/gestao">Gestão</a>
+                    <a  routerLink="/pages/servicos">Controle de Ponto</a>
+                    <a href="#">
+                      <button (click)="logout()" class="sair btn btn-link">Sair do sistema</button>
+                    </a>
+                  </nav>
             </div>
         </div>
 

@@ -1,63 +1,15 @@
-/* Estilos para o footer */
 .footer {
-  background-color: #343a40; /* Cor escura do Bootstrap */
-  color: #ffffff; /* Cor do texto */
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  font-size: 14px; /* Tamanho da fonte */
-  border-top: 1px solid #ddd; /* Linha superior sutil */
-  position: relative;
-  z-index: 10;
-}
-
-.footer a {
-  text-decoration: none;
-  color: #ffffff; /* Cor dos links */
-}
-
-.footer a:hover {
-  color: #f8f9fa; /* Cor ao passar o mouse */
-  text-decoration: underline;
-  transition: color 0.3s ease, text-decoration 0.3s ease;
-}
-
-.footer .container {
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-
-.footer p {
-  margin-bottom: 0.5rem;
-}
-
-.footer ul {
-  padding: 0;
-  margin-top: 1rem;
-  list-style: none;
-}
-
-.footer .list-inline-item {
-  margin: 0 15px;
-}
-
-.footer .footer-link {
-  font-weight: 500;
-  font-size: 16px; /* Ajuste no tamanho do link */
-}
-
-/* Midias Queries para dispositivos móveis */
-@media (max-width: 768px) {
-  .footer p {
-    font-size: 12px; /* Ajuste no tamanho da fonte para dispositivos móveis */
+  height: auto;
+  background: rgb(10,25,36);
+  background: linear-gradient(0deg, rgba(10,25,36,1) 0%, rgba(22,92,114,1) 100%);
+    color: white;
   }
-
-  .footer .list-inline-item {
-    margin: 0 10px; /* Menor espaçamento entre os links */
+  
+  .footer a {
+    color: white;
   }
-
-  .footer .footer-link {
-    font-size: 14px; /* Ajuste no tamanho dos links */
+  
+  .footer a:hover {
+    color: #f8f9fa; /* Cor para links ao passar o mouse */
   }
-}
+  

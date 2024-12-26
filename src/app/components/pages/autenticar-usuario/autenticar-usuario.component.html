@@ -1,58 +1,61 @@
 <div class="d-flex justify-content-center align-items-center vh-100 bg-light">
-    <div class="card shadow p-4" style="max-width: 400px; width: 100%">
-  
-  
-      <div class="text-center mb-3">
-        <h1>Autenticação</h1>
-      </div>
-  
-  
-      <div *ngIf="mensagemErro != ''">
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>{{ mensagemErro }}</strong>
-            <button (click)="mensagemErro = ''" type="button" class="btn-close" aria-label="Close"></button>
+  <div class="card shadow-lg p-5 border-0 rounded-4" style="max-width: 420px; width: 100%">
+
+    <div class="text-center mb-4 header">
+        <div class="logo">
+          <img style="width: 100%;"
+              src="https://media.discordapp.net/attachments/1318715011186823310/1320386191631319100/Logo_profissao_arquitetura_minimalista_branco_e_preto_2.png?ex=676968f7&is=67681777&hm=59ad9dfb36b7bc49ab4a14a661577412eefe5ca6818229ebc8a584046c5e1e4e&=&format=webp&quality=lossless&width=440&height=440" />
+       </div>
+    </div>
+
+    <div *ngIf="mensagemErro != ''">
+      <div class="alert alert-danger d-flex align-items-center p-2" role="alert">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        <div>
+          <strong>{{ mensagemErro }}</strong>
         </div>
-      </div>
-  
-  
-      <form [formGroup]="formulario" (ngSubmit)="autenticarUsuario()">
-  
-  
-        <div class="mb-3">
-          <label for="email" class="form-label">Email de acesso:</label>
-          <input
-            type="email"
-            class="form-control"
-            id="email"
-            placeholder="Digite seu email"
-            formControlName="email"
-          />
-          <div class="text-danger" *ngIf="f['email'].touched && f['email'].invalid">
-            Por favor, informe o seu email de acesso.
-          </div>
-        </div>
-        <div class="mb-3">
-          <label for="password" class="form-label">Senha de acesso:</label>
-          <input
-            type="password"
-            class="form-control"
-            id="password"
-            placeholder="Digite sua senha"
-            formControlName="senha"
-          />
-          <div class="text-danger" *ngIf="f['senha'].touched && f['senha'].invalid">
-            Por favor, informe a sua senha com pelo menos 8 caracteres.
-          </div>
-        </div>
-        <button type="submit" class="btn btn-primary w-100" [disabled]="formulario.invalid">
-          Entrar
-        </button>
-      </form>
-      
-      <div class="text-center mt-3">
-        <p class="mb-0">
-          Não tem uma conta? <a routerLink="/pages/usuarios/criar">Cadastre-se</a>
-        </p>
+        <button (click)="mensagemErro = ''" type="button" class="btn-close ms-auto" aria-label="Close"></button>
       </div>
     </div>
+
+    <form [formGroup]="formulario" (ngSubmit)="autenticarUsuario()">
+      <div class="mb-4">
+        <label for="email" class="form-label fw-semibold">Email de acesso</label>
+        <input
+          type="email"
+          class="form-control p-3 rounded-3"
+          id="email"
+          placeholder="Digite seu email"
+          formControlName="email"
+        />
+        <div class="text-danger small mt-1" *ngIf="f['email'].touched && f['email'].invalid">
+          Por favor, informe o seu email de acesso.
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <label for="password" class="form-label fw-semibold">Senha</label>
+        <input
+          type="password"
+          class="form-control p-3 rounded-3"
+          id="password"
+          placeholder="Digite sua senha"
+          formControlName="senha"
+        />
+        <div class="text-danger small mt-1" *ngIf="f['senha'].touched && f['senha'].invalid">
+          A senha deve ter pelo menos 8 caracteres.
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100 py-3 rounded-3" [disabled]="formulario.invalid">
+        Entrar
+      </button>
+    </form>
+    
+    <div class="text-center mt-4">
+      <p class="mb-0 text-muted">
+        Não tem uma conta? <a routerLink="/pages/usuarios/criar" class="text-primary fw-semibold">Cadastre-se</a>
+      </p>
+    </div>
   </div>
+</div>

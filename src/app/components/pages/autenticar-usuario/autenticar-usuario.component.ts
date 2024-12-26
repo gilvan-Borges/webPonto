@@ -46,7 +46,7 @@ export class AutenticarUsuarioComponent {
           
           sessionStorage.setItem('usuario', JSON.stringify(data));
           
-          location.href = '/pages/dashboard';
+          location.href = '/pages/servicos';
         },
         error: (e) => {
           this.mensagemErro = e.error[0];

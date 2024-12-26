@@ -41,10 +41,21 @@ export class ServicoComponent implements OnInit {
   horaFimAlmoco: string = '--:--';
   horaFimServico: string = '--:--';
 
+ dadosFuncionario = {id: "8e914aff-88e3-4d91-9e24-1281585f252f", name: "Gilvan Borges"}
+
   iniciarServico() {
     this.horaServico = this.getHoraAtual();
     this.btn1 = true;
     this.btn2 = false;
+    this.httpClient.post('http://localhost:8095/api/ponto/entrada',this.dadosFuncionario)
+      .subscribe({
+        next: (data) => {
+          console.log(data);
+        },
+        error: (err) => {
+          console.error('Erro ao carregar funcionários:', err);
+        }
+      });
   }
 
   iniciarAlmoco() {
