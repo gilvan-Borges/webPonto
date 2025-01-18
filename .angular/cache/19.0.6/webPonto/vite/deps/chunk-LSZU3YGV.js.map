@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../../../node_modules/ol/MapEventType.js"],
+  "sourcesContent": ["/**\r\n * @module ol/MapEventType\r\n */\n\n/**\r\n * @enum {string}\r\n */\nexport default {\n  /**\r\n   * Triggered after a map frame is rendered.\r\n   * @event module:ol/MapEvent~MapEvent#postrender\r\n   * @api\r\n   */\n  POSTRENDER: 'postrender',\n  /**\r\n   * Triggered when the map starts moving.\r\n   * @event module:ol/MapEvent~MapEvent#movestart\r\n   * @api\r\n   */\n  MOVESTART: 'movestart',\n  /**\r\n   * Triggered after the map is moved.\r\n   * @event module:ol/MapEvent~MapEvent#moveend\r\n   * @api\r\n   */\n  MOVEEND: 'moveend',\n  /**\r\n   * Triggered when loading of additional map data (tiles, images, features) starts.\r\n   * @event module:ol/MapEvent~MapEvent#loadstart\r\n   * @api\r\n   */\n  LOADSTART: 'loadstart',\n  /**\r\n   * Triggered when loading of additional map data has completed.\r\n   * @event module:ol/MapEvent~MapEvent#loadend\r\n   * @api\r\n   */\n  LOADEND: 'loadend'\n};\n\n/***\r\n * @typedef {'postrender'|'movestart'|'moveend'|'loadstart'|'loadend'} Types\r\n */"],
+  "mappings": ";AAOA,IAAO,uBAAQ;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,EAMb,YAAY;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,EAMZ,WAAW;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,EAMX,SAAS;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,EAMT,WAAW;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,EAMX,SAAS;AACX;",
+  "names": []
+}
